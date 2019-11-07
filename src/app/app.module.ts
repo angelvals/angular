@@ -17,6 +17,11 @@ import { HomeComponent } from './pages/home/home.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { HeaderComponent } from './components/header/header.component';
 
+import { NgxsModule } from '@ngxs/store';
+import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +39,12 @@ import { HeaderComponent } from './components/header/header.component';
     MatSelectModule,
     MatInputModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    NgxsRouterPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot(),
+    NgxsModule.forRoot([
+
+    ], { developmentMode: !environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
