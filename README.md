@@ -4,16 +4,33 @@
 ng add @angular/material
 ```
 
-# Usage
+## Add new components
 
-Add the components that you will need in the app.module file
+```sh
+# Pages
+ng generate component pages/user
+# Components
+ng generate component components/header
+```
+
+## Usage
+
+Add the components that you will need in the app.module file, in this example we are using a custom component for the header
 
 ```typescript
 import { MatToolbarModule } from '@angular/material';
+// Pages in router must be added as components as well
+import { HomeComponent } from './pages/home/home.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+// Custom header component
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    SettingsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -26,15 +43,39 @@ import { MatToolbarModule } from '@angular/material';
 })
 ```
 
-Add the component into the html file
+Modify your app-routing.module file to add your customs and default routes
 
-```html
-<mat-toolbar>
-    <span>My App</span>
-</mat-toolbar>
+```typescript
+const routes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: 'settings', component: SettingsComponent },
+
+  // Default view
+  { path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+];
 ```
 
-For this example I use css custom class to resize mi img in the logo, you can modify this class if you want
+Add the custom component into the html file
+
+```html
+<app-header></app-header>
+<p>Any page you want!!</p>
+```
+
+Note: The component name is declared in the selector attribute of component.ts file
+
+```typescript
+@Component({
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
+})
+```
+
+For this example I use css custom class to resize mi img in the logo, you can modify this class if you want, you can find this in ./src/app/components/header.component.scss
 
 ```css
 img.logo {
@@ -43,6 +84,9 @@ img.logo {
   margin-left: 50%;
   margin-top: 10px;
   margin-right: 20px;
+}
+a.header-link {
+  margin-right: 10px;
 }
 ```
 
