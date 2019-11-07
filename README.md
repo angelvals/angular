@@ -26,7 +26,7 @@ import { MatToolbarModule } from '@angular/material';
 })
 ```
 
-Add the componente into the html file
+Add the component into the html file
 
 ```html
 <mat-toolbar>
