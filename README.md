@@ -15,10 +15,19 @@ ng generate component components/header
 
 ## Usage
 
-Add the components that you will need in the app.module file, in this example we are using a custom component for the header
+Add the components that you will need in the app.module file, in this example we are using a custom component for the header and material components
 
 ```typescript
-import { MatToolbarModule } from '@angular/material';
+// Import all the material components that we are going to need
+import {
+  MatToolbarModule,
+  MatFormFieldModule,
+  MatSelectModule,
+  MatOptionModule,
+  MatInputModule,
+  MatCheckboxModule,
+  MatRadioModule
+} from '@angular/material';
 // Pages in router must be added as components as well
 import { HomeComponent } from './pages/home/home.component';
 import { SettingsComponent } from './pages/settings/settings.component';
@@ -36,7 +45,13 @@ import { HeaderComponent } from './components/header/header.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
