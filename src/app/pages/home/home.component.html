@@ -10,6 +10,9 @@
       <textarea matInput placeholder="Textarea"></textarea>
     </mat-form-field>
 
+    {{ sliderValue }}
+    <mat-slider [min]="minValue" [max]="maxValue" step="50" (change)="updateSlider($event)"></mat-slider>
+
     <mat-form-field>
       <mat-select placeholder="Select">
         <mat-option value="option">Option</mat-option>
@@ -30,9 +33,13 @@
     <mat-form-field>
       <mat-select placeholder="Select">
         <mat-option value="option">Option</mat-option>
+        <mat-option value="option1">Option 1</mat-option>
+        <mat-option value="option2">Option 2</mat-option>
+        <mat-option value="option3">Option 3</mat-option>
+        <mat-option value="option4">Option 4</mat-option>
       </mat-select>
     </mat-form-field>
-    <form class="radio-container">
+    <div class="radio-container">
       <mat-checkbox>Hide required marker</mat-checkbox>
       <div>
         <label>Float label: </label>
@@ -42,6 +49,6 @@
           <mat-radio-button value="never">Never</mat-radio-button>
         </mat-radio-group>
       </div>
-    </form>
+    </div>
   </div>
 </div>

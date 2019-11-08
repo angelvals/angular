@@ -1,4 +1,8 @@
 <app-header></app-header>
 <div class="container">
-  <p>settings works!</p>
+  <app-progress [stepValue]="stepValue"></app-progress>
+  <div class="button-segment">  
+    <button mat-button color="primary" (click)="prevStep()">Prev</button>
+    <button mat-button color="secondary" (click)="nextStep()">Next</button>
+  </div>
 </div>

@@ -1,0 +1,20 @@
+<div id="container">
+  <div class="step-wizard" role="navigation">
+    <div class="progress">
+      <div class="progressbar empty"></div>
+      <div id="prog" class="progressbar" [style.width.%]="stepValue * (100 / (steps.length-1))"></div>
+    </div>
+    <ul>
+      <li *ngFor="let step of steps" [ngClass]="{
+        '':stepValue > step.value,
+        'active':step.value === stepValue,
+        'done':step.value < stepValue
+      }">
+        <button>
+          <div class="step">{{ step.value }}</div>
+          <div class="title">{{ step.desc }}</div>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>

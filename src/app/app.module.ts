@@ -11,7 +11,9 @@ import {
   MatOptionModule,
   MatInputModule,
   MatCheckboxModule,
-  MatRadioModule
+  MatRadioModule,
+  MatSliderModule,
+  MatButtonModule
 } from '@angular/material';
 import { HomeComponent } from './pages/home/home.component';
 import { SettingsComponent } from './pages/settings/settings.component';
@@ -21,13 +23,15 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { environment } from 'src/environments/environment';
+import { ProgressComponent } from './components/progress/progress.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SettingsComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProgressComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +44,8 @@ import { environment } from 'src/environments/environment';
     MatInputModule,
     MatCheckboxModule,
     MatRadioModule,
+    MatSliderModule,
+    MatButtonModule,
     NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
     NgxsModule.forRoot([
