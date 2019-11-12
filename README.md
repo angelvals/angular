@@ -1,7 +1,9 @@
-## Install Material lib
+## Install npm libs
 
 ```sh
-ng add @angular/material
+npm install
+# Use this command to install angular material libs
+# ng add @angular/material
 ```
 
 ## Add new components
