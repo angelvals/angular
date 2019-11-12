@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Form 1</h1>
+  <mat-form-field>
+    <input matInput placeholder="Input" [ngModel]="title" (ngModelChange)="title= $event">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Textarea" [ngModel]="message" (ngModelChange)="message= $event"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Select" [ngModel]="optionSelected" (ngModelChange)="optionSelected= $event">
+      <mat-option value="option">Option</mat-option>
+      <mat-option value="option2">Option 2</mat-option>
+      <mat-option value="option3">Option 3</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

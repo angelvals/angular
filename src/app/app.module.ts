@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 import {
   MatToolbarModule,
   MatFormFieldModule,
@@ -24,6 +25,7 @@ import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { environment } from 'src/environments/environment';
 import { ProgressComponent } from './components/progress/progress.component';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +33,14 @@ import { ProgressComponent } from './components/progress/progress.component';
     HomeComponent,
     SettingsComponent,
     HeaderComponent,
-    ProgressComponent
+    ProgressComponent,
+    DynamicFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatToolbarModule,
     MatFormFieldModule,
     MatOptionModule,

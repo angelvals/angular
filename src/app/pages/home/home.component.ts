@@ -1,23 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
-  sliderValue = 200;
-  minValue = 200;
-  maxValue = 700;
+  data = {
+    title: 'Hello',
+    message: 'Hello World',
+    optionSelected: 'option',
+  };
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
-  updateSlider($event) {
-    this.sliderValue = $event.value;
+  sendData() {
+    console.log(this.data);
   }
 
 }

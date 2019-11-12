@@ -1,54 +1,9 @@
 <app-header></app-header>
-<div class="main-container">
-  <div class="container">
-    <h1>Form 1</h1>
-    <mat-form-field>
-      <input matInput placeholder="Input">
-    </mat-form-field>
-
-    <mat-form-field>
-      <textarea matInput placeholder="Textarea"></textarea>
-    </mat-form-field>
-
-    {{ sliderValue }}
-    <mat-slider [min]="minValue" [max]="maxValue" step="50" (change)="updateSlider($event)"></mat-slider>
-
-    <mat-form-field>
-      <mat-select placeholder="Select">
-        <mat-option value="option">Option</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-
-  <div class="container">
-    <h1>Form 2</h1>
-    <mat-form-field>
-      <input matInput placeholder="Input">
-    </mat-form-field>
-
-    <mat-form-field>
-      <textarea matInput placeholder="Textarea"></textarea>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-select placeholder="Select">
-        <mat-option value="option">Option</mat-option>
-        <mat-option value="option1">Option 1</mat-option>
-        <mat-option value="option2">Option 2</mat-option>
-        <mat-option value="option3">Option 3</mat-option>
-        <mat-option value="option4">Option 4</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <div class="radio-container">
-      <mat-checkbox>Hide required marker</mat-checkbox>
-      <div>
-        <label>Float label: </label>
-        <mat-radio-group>
-          <mat-radio-button value="auto">Auto</mat-radio-button>
-          <mat-radio-button value="always">Always</mat-radio-button>
-          <mat-radio-button value="never">Never</mat-radio-button>
-        </mat-radio-group>
-      </div>
-    </div>
-  </div>
+<div class="container">
+  <app-dynamic-form 
+    [(title)]="data.title"
+    [(message)]="data.message"
+    [(optionSelected)]="data.optionSelected"
+  ></app-dynamic-form>
+  <button mat-raised-button color="primary" (click)="sendData()">Save</button>
 </div>
