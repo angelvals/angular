@@ -16,7 +16,7 @@ export class SettingsComponent implements OnInit {
   }
 
   nextStep() {
-    if (this.stepValue >= this.maxValue) {
+    if (this.stepValue > this.maxValue) {
       return false;
     }
     this.stepValue++;

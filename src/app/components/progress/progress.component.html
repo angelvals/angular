@@ -2,7 +2,7 @@
   <div class="step-wizard" role="navigation">
     <div class="progress">
       <div class="progressbar empty"></div>
-      <div id="prog" class="progressbar" [style.width.%]="stepValue * (100 / (steps.length-1))"></div>
+      <div id="prog" class="progressbar" [style.width.%]="getProgress()"></div>
     </div>
     <ul>
       <li *ngFor="let step of steps" [ngClass]="{

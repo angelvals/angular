@@ -32,4 +32,9 @@ export class ProgressComponent implements OnInit {
   ngOnInit() {
   }
 
+  getProgress() {
+    const progress = this.stepValue * (100 / (this.steps.length - 1));
+    return progress > 100 ? 100 : progress;
+  }
+
 }
