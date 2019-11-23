@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/htt
 import { EMPTY, of } from 'rxjs';
 import { catchError, flatMap } from 'rxjs/operators';
 import { PresentationUrlEndpointInfo } from '../../../common/Http';
+import { TokenService } from '../token/token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,30 +11,27 @@ import { PresentationUrlEndpointInfo } from '../../../common/Http';
 export class LoginService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private tokenService: TokenService
   ) { }
 
   doLogin(username: string, password: string) {
     return this.http.post(PresentationUrlEndpointInfo.loginUrl, { username, password }, { observe: 'response' }).pipe(
       flatMap((httpResponse: HttpResponse<ArrayBuffer>) => {
-        this.getUserSession(httpResponse.body);
+        const token = httpResponse.body['token'];
+        if (token) {
+          this.tokenService.setToken(token);
+        }
         return of (EMPTY);
-      })
+      }),
+      catchError((httpError: HttpErrorResponse) => {
+        console.log(HttpErrorResponse);
+        return of (httpError);
+      }),
     );
   }
 
-  getUserSession(response) {
-    this.http.get(`${PresentationUrlEndpointInfo.baseUrl}${PresentationUrlEndpointInfo.keys.user}`,
-    {
-      headers: {
-        Authorization: `Bearer ${response.token}`,
-        'Content-Type': 'application/json',
-      }
-    }).pipe(
-      flatMap((response: any) => {
-        console.log(response);
-        return of (EMPTY);
-      })
-    ).subscribe();
+  getUserSession() {
+    return this.http.get(`${PresentationUrlEndpointInfo.baseUrl}/${PresentationUrlEndpointInfo.keys.user}`);
   }
 }

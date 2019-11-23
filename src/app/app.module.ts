@@ -14,7 +14,9 @@ import {
   MatCheckboxModule,
   MatRadioModule,
   MatSliderModule,
-  MatButtonModule
+  MatButtonModule,
+  MatDividerModule,
+  MatCardModule
 } from '@angular/material';
 import { HomeComponent } from './pages/home/home.component';
 import { SettingsComponent } from './pages/settings/settings.component';
@@ -28,6 +30,7 @@ import { environment } from 'src/environments/environment';
 import { ProgressComponent } from './components/progress/progress.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { LoginComponent } from './pages/login/login.component';
+import { TokenInterceptorProvider } from './services/token-interceptor/token-interceptor.provider';
 
 @NgModule({
   declarations: [
@@ -53,6 +56,8 @@ import { LoginComponent } from './pages/login/login.component';
     MatRadioModule,
     MatSliderModule,
     MatButtonModule,
+    MatDividerModule,
+    MatCardModule,
     NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
     NgxsModule.forRoot([
@@ -60,9 +65,15 @@ import { LoginComponent } from './pages/login/login.component';
     ], { developmentMode: !environment.production }),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorProvider,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

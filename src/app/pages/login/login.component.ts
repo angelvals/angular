@@ -22,8 +22,6 @@ export class LoginComponent {
   }
 
   login() {
-    console.log(this.loginForm.value.username);
-    console.log(this.loginForm.value.password);
     this.loginService.doLogin(this.loginForm.value.username, this.loginForm.value.password).subscribe();
   }
 

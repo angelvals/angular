@@ -19,9 +19,6 @@ export class DynamicFormComponent {
   @Output()
   messageChange = new EventEmitter<string>();
 
-  @Output()
-  optionSelectedChange = new EventEmitter<string>();
-
   @Input()
   get title() {
     return this.titleValue;
@@ -41,15 +38,4 @@ export class DynamicFormComponent {
     this.messageValue = val;
     this.messageChange.emit(this.messageValue);
   }
-
-  @Input()
-  get optionSelected() {
-    return this.optionSelectedValue;
-  }
-
-  set optionSelected(val) {
-    this.optionSelectedValue = val;
-    this.optionSelectedChange.emit(this.optionSelectedValue);
-  }
-
 }

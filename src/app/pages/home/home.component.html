@@ -3,7 +3,16 @@
   <app-dynamic-form 
     [(title)]="data.title"
     [(message)]="data.message"
-    [(optionSelected)]="data.optionSelected"
   ></app-dynamic-form>
   <button mat-raised-button color="primary" (click)="sendData()">Save</button>
+</div>
+<mat-divider></mat-divider>
+<div class="container">
+  <mat-card *ngFor="let post of posts" style="margin-bottom: 20px;">
+    <mat-card-title>{{ post.Header }}</mat-card-title>
+    <mat-card-content>{{ post.Content }}</mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="error" (click)="deletePost(post)">Delete</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
