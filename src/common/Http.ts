@@ -6,7 +6,7 @@ import { environment } from '../environments/environment';
 export class PresentationUrlEndpointInfo {
   static get keys(): Keys {
     return {
-      user: '',
+      user: 'user/sess',
     };
   }
 
