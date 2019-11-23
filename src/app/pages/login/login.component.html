@@ -1,0 +1,10 @@
+<form [formGroup]="loginForm" class="example-container container">
+  <mat-form-field>
+    <input matInput formControlName="username" placeholder="Username" >
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="password" formControlName="password" placeholder="Password" >
+  </mat-form-field>
+
+  <button mat-raised-button [disabled]="loginForm.invalid" (click)="login()">Login</button>
+</form>
