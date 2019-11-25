@@ -16,7 +16,9 @@ import {
   MatSliderModule,
   MatButtonModule,
   MatDividerModule,
-  MatCardModule
+  MatCardModule,
+  MatSnackBarModule,
+  MatSpinner
 } from '@angular/material';
 import { HomeComponent } from './pages/home/home.component';
 import { SettingsComponent } from './pages/settings/settings.component';
@@ -31,6 +33,9 @@ import { ProgressComponent } from './components/progress/progress.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { LoginComponent } from './pages/login/login.component';
 import { TokenInterceptorProvider } from './services/token-interceptor/token-interceptor.provider';
+import { LoadingInterceptorProvider } from './services/loading-interceptor/loading-interceptor.provider';
+import { LoaderComponent } from './components/loader/loader.component';
+import { LoaderService } from './services/loader/loader.service';
 
 @NgModule({
   declarations: [
@@ -39,8 +44,10 @@ import { TokenInterceptorProvider } from './services/token-interceptor/token-int
     SettingsComponent,
     HeaderComponent,
     ProgressComponent,
+    MatSpinner,
     DynamicFormComponent,
-    LoginComponent
+    LoginComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +65,7 @@ import { TokenInterceptorProvider } from './services/token-interceptor/token-int
     MatButtonModule,
     MatDividerModule,
     MatCardModule,
+    MatSnackBarModule,
     NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
     NgxsModule.forRoot([
@@ -68,9 +76,15 @@ import { TokenInterceptorProvider } from './services/token-interceptor/token-int
     HttpClientModule,
   ],
   providers: [
+    LoaderService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorProvider,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptorProvider,
       multi: true,
     },
   ],

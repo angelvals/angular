@@ -4,6 +4,7 @@ import { EMPTY, of } from 'rxjs';
 import { catchError, flatMap } from 'rxjs/operators';
 import { PresentationUrlEndpointInfo } from '../../../common/Http';
 import { TokenService } from '../token/token.service';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class LoginService {
 
   constructor(
     private http: HttpClient,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private snackBar: MatSnackBar,
   ) { }
 
   doLogin(username: string, password: string) {
@@ -25,7 +27,9 @@ export class LoginService {
         return of (EMPTY);
       }),
       catchError((httpError: HttpErrorResponse) => {
-        console.log(HttpErrorResponse);
+        this.snackBar.open(httpError.error.message, 'OK', {
+          duration: 3000,
+        });
         return of (httpError);
       }),
     );

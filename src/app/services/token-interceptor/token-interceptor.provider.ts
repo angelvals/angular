@@ -5,6 +5,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { map } from 'rxjs/internal/operators';
 import { TokenService } from '../token/token.service';
 import { PresentationUrlEndpointInfo } from 'src/common/Http';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,7 @@ export class TokenInterceptorProvider implements HttpInterceptor {
 
   constructor(
     private readonly token: TokenService,
+    private snackBar: MatSnackBar
   ) { }
 
   intercept(request, next: HttpHandler) {
@@ -44,6 +46,10 @@ export class TokenInterceptorProvider implements HttpInterceptor {
           catchError((err) => {
             if (err instanceof HttpErrorResponse && err.status === this.expiredCode) {
               this.token.deleteToken();
+              this.token.navigateLogin();
+              this.snackBar.open(err.statusText, 'OK', {
+                duration: 3000,
+              });
             }
             return throwError(err);
           }),
