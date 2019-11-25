@@ -19,6 +19,10 @@ export class ApiService {
     return this.http.get(`${PresentationUrlEndpointInfo.baseUrl}/${PresentationUrlEndpointInfo.keys.post}`);
   }
 
+  updatePost(data) {
+    return this.http.put(`${PresentationUrlEndpointInfo.baseUrl}/${PresentationUrlEndpointInfo.keys.post}/${data.id}`, data);
+  }
+
   deletePost(id: number) {
     return this.http.delete(`${PresentationUrlEndpointInfo.baseUrl}/${PresentationUrlEndpointInfo.keys.post}/${id}`);
   }

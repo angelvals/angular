@@ -18,9 +18,10 @@ import {
   MatDividerModule,
   MatCardModule,
   MatSnackBarModule,
-  MatSpinner
+  MatProgressSpinnerModule,
+  MatDialogModule
 } from '@angular/material';
-import { HomeComponent } from './pages/home/home.component';
+import { HomeComponent, UpdateDialogComponent } from './pages/home/home.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -44,10 +45,10 @@ import { LoaderService } from './services/loader/loader.service';
     SettingsComponent,
     HeaderComponent,
     ProgressComponent,
-    MatSpinner,
     DynamicFormComponent,
     LoginComponent,
-    LoaderComponent
+    LoaderComponent,
+    UpdateDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +67,8 @@ import { LoaderService } from './services/loader/loader.service';
     MatDividerModule,
     MatCardModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
     NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
     NgxsModule.forRoot([
@@ -87,6 +90,9 @@ import { LoaderService } from './services/loader/loader.service';
       useClass: LoadingInterceptorProvider,
       multi: true,
     },
+  ],
+  entryComponents: [
+    UpdateDialogComponent
   ],
   bootstrap: [AppComponent]
 })

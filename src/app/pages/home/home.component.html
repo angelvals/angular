@@ -12,6 +12,7 @@
     <mat-card-title>{{ post.Header }}</mat-card-title>
     <mat-card-content>{{ post.Content }}</mat-card-content>
     <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="updatePost(post)">Update</button>
       <button mat-raised-button color="error" (click)="deletePost(post)">Delete</button>
     </mat-card-actions>
   </mat-card>
